@@ -2,14 +2,19 @@ const users = require('express').Router()
 const UserController = require('../controllers');
 
 // show all event
-// users.get('/', UserController.checkUserProfile)
+users.get('/', UserController.checkUserProfile)
 // users.get('/team', UserController.readTeam)
+users.get('/detail', UserController.userDetail)
+users.get('/detail/edit', (req, res) => res.redirect(`/users/${req.session.userId}/profile/edit`))
 
 users.get('/:userId', UserController.checkUserProfile)
 users.get('/:userId/profile', UserController.showProfileForm)
-users.post('/:userId/profile', UserController.submitProfileUser)
+users.post('/:userId/profile', UserController.submitUserProfile)
 
-// users.get('/team/add', UserController.addTeam)
+users.get('/:userId/profile/edit', UserController.editProfileForm)
+users.post('/:userId/profile/edit', UserController.submitEdittedProfile)
+
+// users.get('/:userId/profile/edit', UserController.editUserProfile)
 // users.post('/team/add/submit', UserController.SubmitAddTeam)
 
 module.exports = users;

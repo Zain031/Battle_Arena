@@ -2,16 +2,15 @@
 <div class="container-fluid flex flex-wrap items-center justify-center min-h-screen">
   
   <div class="card w-96 bg-base-100 shadow-xl">
-    <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
+    <figure><img src="https://img.freepik.com/premium-vector/phoenix-esport-mascot-logo-design_119810-1319.jpg?w=740" alt="Shoes" /></figure>
     <div class="card-body">
       <h2 class="card-title">
-        Shoes!
-        <div class="badge badge-secondary">NEW</div>
+        <%= userData.Profile.name %>
       </h2>
-      <p>If a dog chews shoes whose shoes does he choose?</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
       <div class="card-actions justify-end">
-        <div class="badge badge-outline">Fashion</div> 
-        <div class="badge badge-outline">Products</div>
+        <div class="badge badge-accent"><%= userData.role %></div>
+        <div class="badge badge-info"><%= userData.Team.name %></div>
       </div>
     </div>
   </div>

@@ -6,7 +6,7 @@ class UserController {
 
   // GO TO REGISTRATION FORM
   static registrationForm(req, res) {
-    res.render('_layout', { body: 'registrationPage' })
+    res.render('_notLogin', { body: 'registrationPage' })
   }
 
   // REGISTER
@@ -35,7 +35,7 @@ class UserController {
 
     console.log(errorMessage);
 
-    res.render('_layout', { body: 'loginPage', errorMessage })
+    res.render('_notLogin', { body: 'loginPage', errorMessage })
 
   }
 
@@ -99,7 +99,7 @@ class UserController {
     res.render('_layout', { body: 'profile', id })
   }
 
-  static async submitProfileUser(req, res) {
+  static async submitUserProfile(req, res) {
     try {
 
       const { userId: id } = req.params
@@ -137,6 +137,7 @@ class UserController {
 
       const { userId: id } = req.session
       const { teamId } = req.params
+
       await User.update({ TeamId: teamId }, {
         where: {
           id: id
@@ -144,6 +145,59 @@ class UserController {
       })
 
       res.redirect('/events')
+    } catch (error) {
+      res.send(error)
+    }
+  }
+
+  static async userDetail(req, res) {
+    try {
+
+      const { userId: id } = req.session
+      const userData = await User.findOne({
+        include: [{ model: Profile }, { model: Team }],
+        where: { id: id }
+      })
+      console.log(userData);
+      console.log(userData.Team.name, `========================TEAM`);
+      console.log(userData.Profile.name, `========================Profile`);
+      res.render('_layout', { body: 'userProfile', userData })
+    } catch (error) {
+      res.send(error)
+    }
+  }
+
+  static async editProfileForm(req, res) {
+    try {
+
+      const { userId: id } = req.params
+      const userDetail = await User.findOne({ include: Profile, where: { id: req.session.userId } })
+
+      console.log(userDetail);
+      res.render('_layout', { body: 'editProfile', id, userDetail })
+    } catch (error) {
+      res.send(error)
+    }
+  }
+
+  static async submitEdittedProfile(req, res) {
+    try {
+
+      const { name, gender, age } = req.body
+
+      const edittedUser = await Profile.update({
+        name: name,
+        gender: gender,
+        age: age
+      }, {
+        where: {
+          UserId: req.session.userId
+        }
+      })
+
+      console.log(edittedUser);
+
+      res.redirect('/users/detail')
     } catch (error) {
       res.send(error)
     }
