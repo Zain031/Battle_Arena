@@ -1,7 +1,9 @@
+const UserController = require('../controllers/users');
 const users = require('express').Router()
 
-const Controller = require('../controllers')
 
-users.get('/', Controller.showAllUser)
+// users.get('/register', UserController.newUserForm)
+// users.post('/register', UserController.submitNewUser)
+// users.get('/', UserController.showAllUser)
 
 module.exports = users;
