@@ -11,11 +11,11 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Team.hasMany(models.User, {foreignKey: "TeamId"})
     }
   }
   Team.init({
     name: DataTypes.STRING,
-    UserId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Team',
