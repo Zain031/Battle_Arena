@@ -6,6 +6,10 @@ class Controller {
     res.render('_layout')
   }
 
+  static showAllUser(req, res) {
+    
+    res.send(`good joobbb`)
+  }
 }
 
 
