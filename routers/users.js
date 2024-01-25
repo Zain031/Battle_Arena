@@ -1,9 +1,15 @@
-const UserController = require('../controllers/users');
 const users = require('express').Router()
+const UserController = require('../controllers');
 
+// show all event
+// users.get('/', UserController.checkUserProfile)
+// users.get('/team', UserController.readTeam)
 
-// users.get('/register', UserController.newUserForm)
-// users.post('/register', UserController.submitNewUser)
-// users.get('/', UserController.showAllUser)
+users.get('/:userId', UserController.checkUserProfile)
+users.get('/:userId/profile', UserController.showProfileForm)
+users.post('/:userId/profile', UserController.submitProfileUser)
+
+// users.get('/team/add', UserController.addTeam)
+// users.post('/team/add/submit', UserController.SubmitAddTeam)
 
 module.exports = users;

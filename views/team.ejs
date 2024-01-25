@@ -1,25 +1,21 @@
-<h1>Teams</h1>
-<button type="button"> <a href="/team/add'">Create Team</a></button>
-<table class="table text-gray-100">
-  <form class="d-flex shadow-sm p-3 mb-5 bg-body-tertiary rounded bg-info-subtle" role="search"
-    style=" width: 70rem;margin-left: 5rem; margin-top: 2rem;">
-    <input class="form-control me-2" type="search" placeholder="Search Team" aria-label="Search" name="name">
-    <button class="btn btn-outline-primary" type="submit">Search</button>
-  </form>
-  <thead>
-    <tr>
-      <th scope="col">Nama</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% data.forEach((item)=> { %>
-      <tr>
-        <td>
+<div class="container-fluid flex flex-wrap items-center justify-center min-h-screen">
+  <% data.forEach((item)=> { %>
+
+    <div class="card w-96 bg-base-100 shadow-xl image-full m-4 relative">
+      <figure class="max-w-96 max-h-54">
+        <img src="https://img.freepik.com/premium-vector/phoenix-esport-mascot-logo-design_119810-1319.jpg?w=740"
+          alt="Shoes" class="w-full h-full object-cover"/>
+      </figure>
+      <div class="card-body flex flex-col items-center justify-between h-full">
+        <h1 class="card-title text-3xl mb-2">
           <%= item.name %>
-        </td>
-        <td><button type="button" class="btn btn-primary"> <a style="color: aliceblue; text-decoration: none;"
-              href="#">Join Team</a></button></td>
-      </tr>
-      <% }) %>
-  </tbody>
-</table>
+        </h1>
+        <div class="card-actions mt-auto mb-5">
+          <a href="/teams/<%= item.id %>/join" class="btn btn-primary">Join Team</a>
+        </div>
+      </div>
+    </div>
+
+    <% }) %>
+
+</div>

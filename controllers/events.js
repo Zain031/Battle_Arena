@@ -1,48 +1,50 @@
-const formatDate = require("../helper");
-const {
-  Event, Team
-} = require("../models")
+const { formatDate } = require("../helper");
+const { Event, Team } = require("../models");
+const { Op } = require("sequelize");
 
 // const{}
 
 class EventController {
   static async readEvent(req, res) {
     try {
-      // let name = req.query.name
-      // let opt = {
-      //   where: {
-      //     name: {
-      //       [Op.iLike]: { name }
-      //     }
-      //   }
-      // }
 
-      let data = await Event.findAll()
-      console.log(data);
+      console.log(req.query);
+
+      const { search } = req.query
+      let opt = {}
+
+      if (search) {
+        opt.where = { name: { [Op.iLike]: `%${search}%` } }
+      }
+
+      let data = await Event.findAll(opt)
+      // console.log(data);
       res.render("_layout", { body: 'event', data, formatDate })
-    } catch (error) {
+    }
+    catch (error) {
       res.send(error)
     }
   }
+
   static async addEvent(req, res) {
-    try {
-      res.render('_layout', { body: "addEvent" })
-    } catch (error) {
-      res.send(error)
-    }
-  } static async SubmitAddEvent(req, res) {
+    res.render('_layout', { body: "addEvent" })
+  }
+
+  static async SubmitAddEvent(req, res) {
     try {
       let {
         name,
         schedule,
         place
       } = req.body;
+
       await Event.create({
         name: name,
         schedule: schedule,
         place: place
       })
-      res.redirect("./")
+
+      res.redirect("/events")
     } catch (error) {
       res.send(error)
     }
@@ -81,12 +83,6 @@ class EventController {
     }
   }
 }
-
-
-
-
-
-
 
 
 
