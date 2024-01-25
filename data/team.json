@@ -1,20 +1,32 @@
-[{
-    "name" : "Onic E-sport",
-    "UserId" : 1
-},{
-    "name" : "Evos E-sport",
-    "UserId" : 2    
-},{
-    "name" : "RRQ E-sport",
-    "UserId" : 3
-},{
-    "name" : "AlterEgo E-sport",
-    "UserId" : 4
-},{
-    "name" : "Aura E-sport",
-    "UserId" : 4
-},{
-    "name" : "Geek E-sport",
-    "UserId" : 4
-}
+[
+  {
+    "name": "Phoenix Reapers"
+  },
+  {
+    "name": "Thunder Strikers"
+  },
+  {
+    "name": "Eclipse Titans"
+  },
+  {
+    "name": "Silver Wolves"
+  },
+  {
+    "name": "Mystic Vipers"
+  },
+  {
+    "name": "Neon Falcons"
+  },
+  {
+    "name": "Quantum Savants"
+  },
+  {
+    "name": "Galactic Guardians"
+  },
+  {
+    "name": "Astral Enigma"
+  },
+  {
+    "name": "Zenith Gladiators"
+  }
 ]

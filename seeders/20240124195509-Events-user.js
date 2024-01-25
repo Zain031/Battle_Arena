@@ -9,8 +9,6 @@ module.exports = {
     data.forEach(perData => {
       perData.createdAt = new Date();
       perData.updatedAt = new Date()
-
-
     });
 
     await queryInterface.bulkInsert('Events', data, {}); //Stores nama table, data nama variable penyimpan data json

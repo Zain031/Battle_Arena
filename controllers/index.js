@@ -3,8 +3,7 @@ const UserController = require("./users")
 
 class Controller {
   static home(req, res) {
-    res.send('mulaii!!!!!!')
-    // res.render('_layout')
+    res.render('_layout')
   }
 
   static showAllUser(req, res) {

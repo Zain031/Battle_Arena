@@ -1,22 +1,42 @@
-[{
-    "name" : "Mobile Legends Women Invitational",
-    "schedule" :"2024/05/01",
-    "place" : "Indonesia"
-},{
-    "name" : "Mobile Legends World Championship",
-    "schedule" :"2024/06/01",
-    "place" : "Filipina"
-},{
-    "name" : " Mobile Legends: Bang-Bang M6 Tournament",
-    "schedule" :"2024/07/01",
-    "place" : "Amerika Serikat"
-},{
-    "name" : "Mobile Legends Southeast Asia Cup (MSC)",
-    "schedule" :"2024/08/01",
-    "place" : "Kamboja"
-},{
-    "name" : "Mobile Legends Professional League (MPL)",
-    "schedule" :"2024/09/01",
-    "place" : "India"
-}
+[
+  {
+    "name": "Virtual Mayhem Challenge",
+    "schedule": "2024-05-20",
+    "place": "Yokohama eSports Arena"
+  },
+  {
+    "name": "Digital Clash Royale Cup",
+    "schedule": "2024-06-08",
+    "place": "Fukuoka Esports Center"
+  },
+  {
+    "name": "Cyber Legends Invitational",
+    "schedule": "2024-07-15",
+    "place": "Sapporo Gaming Hub"
+  },
+  {
+    "name": "Tech Titans Showdown",
+    "schedule": "2024-08-02",
+    "place": "Nagoya Tech Arena"
+  },
+  {
+    "name": "Anime eSports Fest",
+    "schedule": "2024-09-12",
+    "place": "Hiroshima Anime Dome"
+  },
+  {
+    "name": "Epic Gaming Championship",
+    "schedule": "2024-02-15",
+    "place": "Tokyo Dome"
+  },
+  {
+    "name": "Pixel Clash Masters",
+    "schedule": "2024-03-10",
+    "place": "Osaka Arena"
+  },
+  {
+    "name": "Zenith Esports Showdown",
+    "schedule": "2024-04-05",
+    "place": "Kyoto Convention Center"
+  }
 ]
