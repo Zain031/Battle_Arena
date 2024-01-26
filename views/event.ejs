@@ -1,6 +1,8 @@
-<div class="container-fluid flex flex-wrap items-center justify-center mt-5 relative">
-  <a href="/events/add" class="btn btn-primary">Add Event</a>
-</div>
+<% if (checkRole.role == 'Admin') { %>
+  <div class="container-fluid flex flex-wrap items-center justify-center mt-5 relative">
+    <a href="/events/add" class="btn btn-primary">Add Event</a>
+  </div>
+<% } %>
 
 <div class="container-fluid flex flex-wrap items-center justify-center min-h-screen">
     <% data.forEach((item)=> { %>
@@ -19,9 +21,12 @@
           <p class="absolute bottom-10 left-6">
             <%= formatDate(item.schedule)%>
           </p>
+
           <div class="card-actions flex justify-end">
-            <a href="/events/<%= item.id %>/join" class="btn btn-primary">Join Event</a>
+            <a href="<%= checkRole.role == 'Admin' ? `/events/${item.id}/delete` : `/events/${item.id}/join` %>" 
+              class="<%= checkRole.role == 'Admin' ? `btn btn-error` : `btn btn-primary` %>" role="button"><%= checkRole.role == 'Admin' ? `Delete Event` : `Join Event` %></a>
           </div>
+          
         </div>
       </div>
 

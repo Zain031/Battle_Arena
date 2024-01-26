@@ -34,7 +34,7 @@ const generateEventInvitation = (event = 'BlackCompany', name = 'Anonymous', tea
   // Create a document
   const doc = new PDFDocument();
 
-  doc.pipe(fs.createWriteStream('./files/output.pdf'));
+  doc.pipe(fs.createWriteStream(`./files/ticket_event_${event.split(' ').join('_')}_${name.split(' ').join('_')}_${code}.pdf`));
 
   doc
     .image('./images/event-logo.jpg', 205, 15, { fit: [200, 200], align: 'center', valign: 'center' })

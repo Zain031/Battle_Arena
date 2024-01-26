@@ -9,6 +9,8 @@ class EventController {
 
       console.log(req.query);
 
+      const checkRole = await User.findOne({ where: { id: req.session.userId } })
+
       const { search } = req.query
       let opt = {}
 
@@ -18,7 +20,7 @@ class EventController {
 
       let data = await Event.findAll(opt)
       // console.log(data);
-      res.render("_layout", { body: 'event', data, formatDate })
+      res.render("_layout", { body: 'event', data, formatDate, checkRole })
     }
     catch (error) {
       res.send(error)
@@ -48,6 +50,7 @@ class EventController {
       res.send(error)
     }
   }
+
   static async joinEvent(req, res) {
     try {
       // Log information or handle errors before the redirect
@@ -70,16 +73,26 @@ class EventController {
 
       generateEventInvitation(userDetail.Events[0].name, userDetail.Profile.name, userDetail.Team.name, eventCode.eventCode)
 
-      // console.log(eventCode.eventCode, '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
-      // console.log(userDetail.Events[0].name, '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
-      // console.log(userDetail.Profile.name, '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
-
       // Now perform the redirect
-      const successMessage = `Congratulations ${userDetail.Events[0].name} from team ${userDetail.Profile.name}\nYou're successfully enter ${userDetail.Team.name} tournament`
+      const successMessage = `Congratulations ${userDetail.Events[0].name} from team ${userDetail.Profile.name}\nYou're successfully entering ${userDetail.Team.name} tournament`
 
       res.redirect(`/users/detail?success=${successMessage}`);
     } catch (error) {
-      // Handle errors if any
+      console.error(error);
+      res.send(error);
+    }
+  }
+
+  static async deleteEvent(req, res) {
+    try {
+      // Log information or handle errors before the redirect
+      const { userId } = req.session
+      const { eventId: id } = req.params
+
+      await Event.destroy({ where: { id: id } })
+
+      res.redirect(`/events`);
+    } catch (error) {
       console.error(error);
       res.send(error);
     }

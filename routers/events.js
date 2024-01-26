@@ -8,7 +8,6 @@ events.get('/add', EventController.addEvent)
 events.post('/add', EventController.SubmitAddEvent)
 
 events.get('/:eventId/join', EventController.joinEvent)
-// events.get('/:eventId/join', EventController.addTeam)
-// events.post('/team/add/submit', EventController.SubmitAddTeam)
+events.get('/:eventId/delete', EventController.deleteEvent)
 
 module.exports = events;

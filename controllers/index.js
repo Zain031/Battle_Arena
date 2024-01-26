@@ -74,7 +74,7 @@ class UserController {
     try {
 
       const { userId: id } = req.params
-      console.log(req.params)
+      // console.log(req.params)
 
       const userProfileExist = await User.findOne({
         include: Profile,
@@ -83,7 +83,7 @@ class UserController {
         }
       })
 
-      console.log(userProfileExist)
+      // console.log(userProfileExist)
 
       userProfileExist.Profile == null ? res.redirect(`/users/${id}/profile`) : res.redirect('/events')
 
@@ -93,7 +93,7 @@ class UserController {
   }
 
   static async showProfileForm(req, res) {
-    console.log(req.params);
+    // console.log(req.params);
 
     const { userId: id } = req.params
     res.render('_layout', { body: 'profile', id })
@@ -133,7 +133,7 @@ class UserController {
 
   static async joinTeam(req, res) {
     try {
-      console.log(req.params);
+      // console.log(req.params);
 
       const { userId: id } = req.session
       const { teamId } = req.params
@@ -153,15 +153,19 @@ class UserController {
   static async userDetail(req, res) {
     try {
 
+      console.log(req.query)
+      const { success } = req.query
+
+
       const { userId: id } = req.session
       const userData = await User.findOne({
         include: [{ model: Profile }, { model: Team }],
         where: { id: id }
       })
-      console.log(userData);
-      console.log(userData.Team.name, `========================TEAM`);
-      console.log(userData.Profile.name, `========================Profile`);
-      res.render('_layout', { body: 'userProfile', userData })
+      // console.log(userData);
+      // console.log(userData.Team.name, `========================TEAM`);
+      // console.log(userData.Profile.name, `========================Profile`);
+      res.render('_layout', { body: 'userProfile', userData, success })
     } catch (error) {
       res.send(error)
     }
