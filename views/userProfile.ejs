@@ -1,0 +1,23 @@
+<% if (success) { %>
+  <h2 class="mt-10 text-center text-1x1 font-bold leading-9 tracking-tight text-sky-400">Congratulations, <%= userData.Profile.name %>
+    You will be entering the Tournament %></h2>
+<% } %>
+
+
+<div class="container-fluid flex flex-wrap items-center justify-center min-h-screen">
+  
+  <div class="card w-96 bg-base-100 shadow-xl">
+    <figure><img src="https://img.freepik.com/premium-vector/phoenix-esport-mascot-logo-design_119810-1319.jpg?w=740" alt="Shoes" /></figure>
+    <div class="card-body">
+      <h2 class="card-title">
+        <%= userData.Profile.name %>
+      </h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <div class="card-actions justify-end">
+        <div class="<%= userData.role == 'Admin' ? 'badge badge-secondary' : 'badge badge-accent' %>"><%= userData.role %></div>
+        <div class="badge badge-info"><%= userData.Team.name %></div>
+      </div>
+    </div>
+  </div>
+
+</div>

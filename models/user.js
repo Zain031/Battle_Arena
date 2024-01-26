@@ -75,18 +75,24 @@ module.exports = (sequelize, DataTypes) => {
     hooks: {
       beforeCreate: async (user) => {
 
+        // CHECK ROLE USER, IF ROLE IS NOT DEFINED REGISTER IT AS ADMIN
+        user.email && user.email == 'cat@pult.com' && user.password == 'catapult' || user.email && user.email == 'dr@gon.com' && user.password == 'toothless' ? user.role = 'Admin' : user.role = 'Player'
+
         // GENERATE HASH PASSWORD
         const salt = bcrypt.genSaltSync(5);
         user.password = bcrypt.hashSync(user.password, salt);
 
-        // user.role = 'Player'
 
-        // CHECK ROLE USER, IF ROLE IS NOT DEFINED REGISTER IT AS ADMIN
-        !user.role ? user.role = 'Player' : 'Admin'
-        
-        console.log(user.role, user.password);
-        user.role == 'Admin' ? user.TeamId = 1 : user.TeamId = 2
-        console.log(user.TeamId);
+
+        // console.log(user.role, user.password);
+        if (user.role == 'Admin') {
+          user.TeamId = 1
+        } else {
+          let min = Math.ceil(1);
+          let max = Math.floor(10);
+          user.TeamId = Math.floor(Math.random() * (max - min + 1) + min)
+        }
+        // console.log(user.TeamId);
       },
     },
     sequelize,

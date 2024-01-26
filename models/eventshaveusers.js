@@ -2,6 +2,8 @@
 const {
   Model
 } = require('sequelize');
+const { generateString } = require('../helper');
+
 module.exports = (sequelize, DataTypes) => {
   class EventsHaveUsers extends Model {
     /**
@@ -18,6 +20,11 @@ module.exports = (sequelize, DataTypes) => {
     UserId: DataTypes.INTEGER,
     EventId: DataTypes.INTEGER
   }, {
+    hooks: {
+      beforeCreate: (instance, options) => {
+        instance.eventCode = generateString(10);
+      }
+    },
     sequelize,
     modelName: 'EventsHaveUsers',
   });
