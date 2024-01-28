@@ -3,7 +3,9 @@ const events = require('./events');
 const users = require('./users');
 const teams = require('./teams');
 const UserController = require('../controllers');
-const { loginValid } = require('../helper');
+const {
+    loginValid
+} = require('../helper');
 
 // go to register page
 router.get('/register', UserController.registrationForm)
