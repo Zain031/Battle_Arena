@@ -7,7 +7,7 @@ class EventController {
   static async readEvent(req, res) {
     try {
 
-      console.log(req.query);
+      // console.log(req.query);
 
       const checkRole = await User.findOne({ where: { id: req.session.userId } })
 
@@ -54,7 +54,7 @@ class EventController {
   static async joinEvent(req, res) {
     try {
       // Log information or handle errors before the redirect
-      console.log(req.session, 'dari event!!!!!!!!!!!!!!!!!!!!!!');
+      // console.log(req.session, 'dari event!!!!!!!!!!!!!!!!!!!!!!');
       const { userId } = req.session
       const { eventId: id } = req.params
 
@@ -93,7 +93,7 @@ class EventController {
 
       res.redirect(`/events`);
     } catch (error) {
-      console.error(error);
+      console.log(error);
       res.send(error);
     }
   }
