@@ -33,7 +33,7 @@ class UserController {
 
     const { errorMessage } = req.query;
 
-    console.log(errorMessage);
+    // console.log(errorMessage);
 
     res.render('_notLogin', { body: 'loginPage', errorMessage })
 
@@ -153,7 +153,7 @@ class UserController {
   static async userDetail(req, res) {
     try {
 
-      console.log(req.query)
+      // console.log(req.query)
       const { success } = req.query
 
 
@@ -177,7 +177,7 @@ class UserController {
       const { userId: id } = req.params
       const userDetail = await User.findOne({ include: Profile, where: { id: req.session.userId } })
 
-      console.log(userDetail);
+      // console.log(userDetail);
       res.render('_layout', { body: 'editProfile', id, userDetail })
     } catch (error) {
       res.send(error)
@@ -199,7 +199,7 @@ class UserController {
         }
       })
 
-      console.log(edittedUser);
+      // console.log(edittedUser);
 
       res.redirect('/users/detail')
     } catch (error) {
